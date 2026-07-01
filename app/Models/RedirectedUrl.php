@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Link extends Model
+class RedirectedUrl extends Model
 {
     use SoftDeletes;
 
     protected $fillable = [
         'user_id',
-        'orig_link',
-        'short_link',
+        'orig_url',
+        'short_url',
     ];
 }

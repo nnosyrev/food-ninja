@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Links\Tables;
+namespace App\Filament\Resources\RedirectedUrls\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
@@ -12,15 +12,20 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 
-class LinksTable
+class RedirectedUrlsTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
-                TextColumn::make('user_id'),
-                TextColumn::make('orig_link'),
-                TextColumn::make('short_link'),
+                TextColumn::make('orig_url')
+                    ->searchable(),
+                TextColumn::make('short_url')
+                    ->searchable(),
+                TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 TrashedFilter::make(),

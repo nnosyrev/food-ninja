@@ -1,17 +1,19 @@
 <?php
 
-namespace App\Filament\Resources\Links\Schemas;
+namespace App\Filament\Resources\RedirectedUrls\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
-class LinkForm
+class RedirectedUrlForm
 {
     public static function configure(Schema $schema): Schema
     {
         return $schema
             ->components([
-                TextInput::make('orig_link'),
+                TextInput::make('orig_url')
+                    ->url()
+                    ->required(),
             ]);
     }
 }

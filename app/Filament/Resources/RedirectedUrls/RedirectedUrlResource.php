@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Filament\Resources\Links;
+namespace App\Filament\Resources\RedirectedUrls;
 
-use App\Filament\Resources\Links\Pages\CreateLink;
-use App\Filament\Resources\Links\Pages\EditLink;
-use App\Filament\Resources\Links\Pages\ListLinks;
-use App\Filament\Resources\Links\Schemas\LinkForm;
-use App\Filament\Resources\Links\Tables\LinksTable;
-use App\Models\Link;
+use App\Filament\Resources\RedirectedUrls\Pages\CreateRedirectedUrl;
+use App\Filament\Resources\RedirectedUrls\Pages\EditRedirectedUrl;
+use App\Filament\Resources\RedirectedUrls\Pages\ListRedirectedUrls;
+use App\Filament\Resources\RedirectedUrls\Schemas\RedirectedUrlForm;
+use App\Filament\Resources\RedirectedUrls\Tables\RedirectedUrlsTable;
+use App\Models\RedirectedUrl;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -16,22 +16,22 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class LinkResource extends Resource
+class RedirectedUrlResource extends Resource
 {
-    protected static ?string $model = Link::class;
+    protected static ?string $model = RedirectedUrl::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
-    protected static ?string $recordTitleAttribute = 'Link';
+    protected static ?string $recordTitleAttribute = 'Redirected url';
 
     public static function form(Schema $schema): Schema
     {
-        return LinkForm::configure($schema);
+        return RedirectedUrlForm::configure($schema);
     }
 
     public static function table(Table $table): Table
     {
-        return LinksTable::configure($table);
+        return RedirectedUrlsTable::configure($table);
     }
 
     public static function getRelations(): array
@@ -44,9 +44,9 @@ class LinkResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => ListLinks::route('/'),
-            'create' => CreateLink::route('/create'),
-            'edit' => EditLink::route('/{record}/edit'),
+            'index' => ListRedirectedUrls::route('/'),
+            'create' => CreateRedirectedUrl::route('/create'),
+            'edit' => EditRedirectedUrl::route('/{record}/edit'),
         ];
     }
 

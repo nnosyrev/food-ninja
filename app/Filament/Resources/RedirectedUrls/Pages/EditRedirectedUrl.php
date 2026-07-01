@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Filament\Resources\Links\Pages;
+namespace App\Filament\Resources\RedirectedUrls\Pages;
 
-use App\Filament\Resources\Links\LinkResource;
+use App\Filament\Resources\RedirectedUrls\RedirectedUrlResource;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ForceDeleteAction;
 use Filament\Actions\RestoreAction;
 use Filament\Resources\Pages\EditRecord;
 
-class EditLink extends EditRecord
+class EditRedirectedUrl extends EditRecord
 {
-    protected static string $resource = LinkResource::class;
+    protected static string $resource = RedirectedUrlResource::class;
 
     protected function getHeaderActions(): array
     {
