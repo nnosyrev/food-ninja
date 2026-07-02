@@ -40,7 +40,6 @@ class RedirectedUrlsTable
             ])
             ->recordActions([
                 DeleteAction::make(),
-                EditAction::make(),
                 Action::make('Statistics')
                     ->color('success')
                     ->icon(Heroicon::NumberedList)

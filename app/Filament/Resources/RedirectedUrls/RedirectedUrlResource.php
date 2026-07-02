@@ -46,7 +46,6 @@ class RedirectedUrlResource extends Resource
         return [
             'index' => ListRedirectedUrls::route('/'),
             'create' => CreateRedirectedUrl::route('/create'),
-            'edit' => EditRedirectedUrl::route('/{record}/edit'),
         ];
     }
 
