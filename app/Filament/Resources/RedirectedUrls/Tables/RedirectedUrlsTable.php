@@ -2,14 +2,17 @@
 
 namespace App\Filament\Resources\RedirectedUrls\Tables;
 
+use App\Filament\Resources\RedirectedUrls\Resources\RedirectStatistics\Pages\ListRedirectedStatistics;
 use App\Models\RedirectedUrl;
 use App\Services\UrlShortener\UrlShortenerInterface;
+use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ForceDeleteBulkAction;
 use Filament\Actions\RestoreBulkAction;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
@@ -38,6 +41,12 @@ class RedirectedUrlsTable
             ->recordActions([
                 DeleteAction::make(),
                 EditAction::make(),
+                Action::make('Statistics')
+                    ->color('success')
+                    ->icon(Heroicon::NumberedList)
+                    ->url(
+                        fn (RedirectedUrl $record): string => ListRedirectedStatistics::getUrl(['redirected_url' => $record->id])
+                    ),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
