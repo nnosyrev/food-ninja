@@ -9,7 +9,6 @@ use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
-use Filament\Actions\EditAction;
 use Filament\Actions\ForceDeleteBulkAction;
 use Filament\Actions\RestoreBulkAction;
 use Filament\Support\Icons\Heroicon;
@@ -25,11 +24,12 @@ class RedirectedUrlsTable
             ->columns([
                 TextColumn::make('orig_url')
                     ->searchable(),
-                TextColumn::make('hash')->state(
-                    fn (RedirectedUrl $redirectedUrl, UrlShortenerInterface $urlShortener): string => $urlShortener->generateShortUrlByHash($redirectedUrl->hash)
-                )
+                TextColumn::make('hash')
+                    ->state(fn (RedirectedUrl $redirectedUrl, UrlShortenerInterface $urlShortener): string => $urlShortener->generateShortUrlByHash($redirectedUrl->hash))
                     ->label('Short url')
                     ->searchable(),
+                TextColumn::make('number_redirects')->state(fn (RedirectedUrl $redirectedUrl): string => $redirectedUrl->redirectStatistics()->count())
+                    ->label('Number of redirects'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

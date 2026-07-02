@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\RedirectedUrls;
 
 use App\Filament\Resources\RedirectedUrls\Pages\CreateRedirectedUrl;
-use App\Filament\Resources\RedirectedUrls\Pages\EditRedirectedUrl;
 use App\Filament\Resources\RedirectedUrls\Pages\ListRedirectedUrls;
 use App\Filament\Resources\RedirectedUrls\Schemas\RedirectedUrlForm;
 use App\Filament\Resources\RedirectedUrls\Tables\RedirectedUrlsTable;
