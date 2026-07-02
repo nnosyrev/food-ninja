@@ -27,9 +27,12 @@ class RedirectedUrlsTable
                 TextColumn::make('hash')
                     ->state(fn (RedirectedUrl $redirectedUrl, UrlShortenerInterface $urlShortener): string => $urlShortener->generateShortUrlByHash($redirectedUrl->hash))
                     ->label('Short url')
+                    ->url(fn (RedirectedUrl $redirectedUrl, UrlShortenerInterface $urlShortener): string => $urlShortener->generateShortUrlByHash($redirectedUrl->hash))
+                    ->openUrlInNewTab()
                     ->searchable(),
-                TextColumn::make('number_redirects')->state(fn (RedirectedUrl $redirectedUrl): string => $redirectedUrl->redirectStatistics()->count())
-                    ->label('Number of redirects'),
+                TextColumn::make('redirectstatistics_count')
+                    ->label('Number of redirects')
+                    ->counts('redirectstatistics'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -39,13 +42,13 @@ class RedirectedUrlsTable
                 TrashedFilter::make(),
             ])
             ->recordActions([
-                DeleteAction::make(),
                 Action::make('Statistics')
                     ->color('success')
                     ->icon(Heroicon::NumberedList)
                     ->url(
                         fn (RedirectedUrl $record): string => ListRedirectedStatistics::getUrl(['redirected_url' => $record->id])
                     ),
+                DeleteAction::make()
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

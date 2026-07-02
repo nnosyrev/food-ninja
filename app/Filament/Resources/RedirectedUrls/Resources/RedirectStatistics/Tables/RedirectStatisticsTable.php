@@ -15,6 +15,7 @@ class RedirectStatisticsTable
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
+                    ->alignEnd()
                     ->sortable(),
             ]);
     }
