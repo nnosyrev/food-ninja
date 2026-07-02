@@ -8,4 +8,4 @@ Route::get('/', function () {
 });
 
 // It is important to keep this route last on the list!
-Route::get('/{hash}', [RedirectedUrlController::class, 'redirect']);
+Route::get('/{hash}', [RedirectedUrlController::class, 'redirect'])->name('redirecting_url');

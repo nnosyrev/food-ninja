@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\RedirectedUrls\Tables;
 
+use App\Models\RedirectedUrl;
+use App\Services\UrlShortener\UrlShortenerInterface;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
@@ -20,7 +22,9 @@ class RedirectedUrlsTable
             ->columns([
                 TextColumn::make('orig_url')
                     ->searchable(),
-                TextColumn::make('short_url')
+                TextColumn::make('short_url')->state(
+                    fn (RedirectedUrl $redirectedUrl, UrlShortenerInterface $urlShortener): string => $urlShortener->generateShortUrlByHash($redirectedUrl->hash)
+                )
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()

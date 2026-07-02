@@ -2,20 +2,20 @@
 
 namespace App\Services\UrlShortener;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Illuminate\Routing\UrlGenerator;
 
 class SimpleUrlShortener implements UrlShortenerInterface
 {
-    public function __construct(private readonly Request $request) {}
+    public function __construct(private readonly UrlGenerator $urlGenerator) {}
 
-    public function generateShortUrl(string $origUrl): string
+    public function generateShortUrlHash(User $user, string $origUrl): string
     {
-        return $this->request->schemeAndHttpHost() . '/' . \substr(\md5($this->getUserId() . $origUrl . microtime()), 0, 8);
+        return \substr(\md5($user->id . $origUrl . microtime()), 0, 8);
     }
 
-    private function getUserId(): int
+    public function generateShortUrlByHash(string $hash): string
     {
-        return Auth::id();
+        return $this->urlGenerator->route('redirecting_url', ['hash' => $hash]);
     }
 }

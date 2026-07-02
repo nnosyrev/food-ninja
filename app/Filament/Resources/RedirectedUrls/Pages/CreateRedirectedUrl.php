@@ -20,9 +20,10 @@ class CreateRedirectedUrl extends CreateRecord
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-        $data['user_id'] = Auth::id();
+        $user = Auth::user();
 
-        $data['short_url'] = $this->urlShortener->generateShortUrl($data['orig_url']);
+        $data['user_id'] = $user->id;
+        $data['hash'] = $this->urlShortener->generateShortUrlHash($user, $data['orig_url']);
 
         return $data;
     }

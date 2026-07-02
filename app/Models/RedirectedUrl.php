@@ -12,6 +12,6 @@ class RedirectedUrl extends Model
     protected $fillable = [
         'user_id',
         'orig_url',
-        'short_url',
+        'hash',
     ];
 }
