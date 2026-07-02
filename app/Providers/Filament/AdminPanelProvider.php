@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Pages\CustomRegistrationSettings;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -18,6 +19,8 @@ use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Tallcms\FilamentRegistration\Filament\FilamentRegistrationPlugin;
+use Tallcms\FilamentRegistration\Filament\Pages\Register;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -54,6 +57,12 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            ->registration(Register::class)
+            ->plugin(
+                FilamentRegistrationPlugin::make()
+                    ->defaultRole(null)
+                    ->settingsPage(CustomRegistrationSettings::class)
+            );
     }
 }
