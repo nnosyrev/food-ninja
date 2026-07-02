@@ -22,9 +22,10 @@ class RedirectedUrlsTable
             ->columns([
                 TextColumn::make('orig_url')
                     ->searchable(),
-                TextColumn::make('short_url')->state(
+                TextColumn::make('hash')->state(
                     fn (RedirectedUrl $redirectedUrl, UrlShortenerInterface $urlShortener): string => $urlShortener->generateShortUrlByHash($redirectedUrl->hash)
                 )
+                    ->label('Short url')
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
