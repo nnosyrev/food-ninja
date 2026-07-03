@@ -9,11 +9,8 @@ use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
-use Filament\Actions\ForceDeleteBulkAction;
-use Filament\Actions\RestoreBulkAction;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 
 class RedirectedUrlsTable
@@ -35,13 +32,11 @@ class RedirectedUrlsTable
                     ->label('Количество переходов')
                     ->counts('redirectstatistics'),
                 TextColumn::make('created_at')
-                    ->label('Дата')
+                    ->label('Дата создания')
                     ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->sortable(),
             ])
             ->filters([
-                TrashedFilter::make(),
             ])
             ->recordActions([
                 Action::make('Statistics')
@@ -56,8 +51,6 @@ class RedirectedUrlsTable
             ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
-                    ForceDeleteBulkAction::make(),
-                    RestoreBulkAction::make(),
                 ]),
             ]);
     }
