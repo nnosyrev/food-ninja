@@ -1,6 +1,6 @@
 ### Как поднять локально
 
-1. Скопировать the .env.example -> .env:
+1. Скопировать .env.example в .env:
 
 ```bash
 cp .env.example .env
