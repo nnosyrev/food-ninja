@@ -16,7 +16,7 @@ class ListRedirectedStatistics extends ListRecords
         return [
             Action::make('Ссылки')
                 ->url(
-                    fn (): string => ListRedirectedUrls::getUrl()
+                    fn(): string => ListRedirectedUrls::getUrl()
                 ),
         ];
     }

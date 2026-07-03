@@ -24,9 +24,9 @@ class RedirectedUrlsTable
                     ->label('Оригинальный URL')
                     ->searchable(),
                 TextColumn::make('hash')
-                    ->state(fn (RedirectedUrl $redirectedUrl, UrlShortenerInterface $urlShortener): string => $urlShortener->generateShortUrlByHash($redirectedUrl->hash))
+                    ->state(fn(RedirectedUrl $redirectedUrl, UrlShortenerInterface $urlShortener): string => $urlShortener->generateShortUrlByHash($redirectedUrl->hash))
                     ->label('Короткий URL')
-                    ->url(fn (RedirectedUrl $redirectedUrl, UrlShortenerInterface $urlShortener): string => $urlShortener->generateShortUrlByHash($redirectedUrl->hash))
+                    ->url(fn(RedirectedUrl $redirectedUrl, UrlShortenerInterface $urlShortener): string => $urlShortener->generateShortUrlByHash($redirectedUrl->hash))
                     ->openUrlInNewTab()
                     ->searchable(),
                 TextColumn::make('redirectstatistics_count')
@@ -46,9 +46,9 @@ class RedirectedUrlsTable
                     ->color('success')
                     ->icon(Heroicon::NumberedList)
                     ->url(
-                        fn (RedirectedUrl $record): string => ListRedirectedStatistics::getUrl(['redirected_url' => $record->id])
+                        fn(RedirectedUrl $record): string => ListRedirectedStatistics::getUrl(['redirected_url' => $record->id])
                     ),
-                DeleteAction::make()
+                DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
