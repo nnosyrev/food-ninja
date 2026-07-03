@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "17d923db5b4ce40a66e425205d2ac582",
+    "content-hash": "b668f89a0aed63f7cc239ec0541db900",
     "packages": [
         {
             "name": "blade-ui-kit/blade-heroicons",
@@ -8120,6 +8120,80 @@
                 }
             ],
             "time": "2026-04-26T05:33:54+00:00"
+        },
+        {
+            "name": "webteractive/filament-browser-timezone",
+            "version": "1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webteractive/filament-browser-timezone.git",
+                "reference": "0163206bf1f110e65bc4e5c74b5b21f414722aeb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webteractive/filament-browser-timezone/zipball/0163206bf1f110e65bc4e5c74b5b21f414722aeb",
+                "reference": "0163206bf1f110e65bc4e5c74b5b21f414722aeb",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^3.0||^4.0||^5.0",
+                "laravel/framework": "^10.0||^11.28.0||^12.0||^13.0",
+                "livewire/livewire": "^3.0||^4.0",
+                "php": "^8.2",
+                "spatie/laravel-package-tools": "^1.16"
+            },
+            "require-dev": {
+                "larastan/larastan": "^2.9||^3.0",
+                "laravel/pint": "^1.14",
+                "nunomaduro/collision": "^8.1.1||^7.10.0",
+                "orchestra/testbench": "^11.0.0||^10.0.0||^9.0.0||^8.22.0",
+                "pestphp/pest": "^2.0||^3.0||^4.0",
+                "pestphp/pest-plugin-arch": "^2.5||^3.0||^4.0",
+                "pestphp/pest-plugin-laravel": "^2.0||^3.0||^4.0",
+                "phpstan/extension-installer": "^1.3",
+                "phpstan/phpstan-deprecation-rules": "^1.1||^2.0",
+                "phpstan/phpstan-phpunit": "^1.3||^2.0",
+                "spatie/laravel-ray": "^1.35"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Webteractive\\FilamentBrowserTimezone\\FilamentBrowserTimezoneServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Webteractive\\FilamentBrowserTimezone\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Glen Bangkila",
+                    "email": "hadeinvane@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Filament plugin to detect user's browser timezone and make it available to Tables, Forms, and Infolist via session",
+            "homepage": "https://github.com/webteractive/filament-browser-timezone",
+            "keywords": [
+                "Webteractive",
+                "browser",
+                "filament",
+                "laravel",
+                "livewire",
+                "timezone"
+            ],
+            "support": {
+                "issues": "https://github.com/webteractive/filament-browser-timezone/issues",
+                "source": "https://github.com/webteractive/filament-browser-timezone/tree/v1.6.0"
+            },
+            "time": "2026-05-23T14:07:54+00:00"
         }
     ],
     "packages-dev": [

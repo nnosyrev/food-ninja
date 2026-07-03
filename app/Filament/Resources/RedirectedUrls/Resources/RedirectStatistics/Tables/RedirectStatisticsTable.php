@@ -4,6 +4,7 @@ namespace App\Filament\Resources\RedirectedUrls\Resources\RedirectStatistics\Tab
 
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Webteractive\FilamentBrowserTimezone\BrowserTimezone;
 
 class RedirectStatisticsTable
 {
@@ -16,6 +17,7 @@ class RedirectStatisticsTable
                 TextColumn::make('created_at')
                     ->label('Дата перехода')
                     ->dateTime()
+                    ->timezone(BrowserTimezone::get())
                     ->alignEnd()
                     ->sortable(),
             ]);

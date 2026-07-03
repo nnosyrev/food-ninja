@@ -12,6 +12,7 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Webteractive\FilamentBrowserTimezone\BrowserTimezone;
 
 class RedirectedUrlsTable
 {
@@ -34,6 +35,7 @@ class RedirectedUrlsTable
                 TextColumn::make('created_at')
                     ->label('Дата создания')
                     ->dateTime()
+                    ->timezone(BrowserTimezone::get())
                     ->sortable(),
             ])
             ->filters([
