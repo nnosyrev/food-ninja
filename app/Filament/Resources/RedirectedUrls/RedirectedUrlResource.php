@@ -24,6 +24,10 @@ class RedirectedUrlResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'Redirected url';
 
+    protected static ?string $modelLabel = 'ссылку';
+
+    protected static ?string $pluralLabel = 'Ссылки';
+
     public static function form(Schema $schema): Schema
     {
         return RedirectedUrlForm::configure($schema);

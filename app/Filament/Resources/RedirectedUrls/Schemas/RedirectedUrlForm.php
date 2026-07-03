@@ -12,6 +12,7 @@ class RedirectedUrlForm
         return $schema
             ->components([
                 TextInput::make('orig_url')
+                    ->label('Оригинальный URL')
                     ->url()
                     ->required(),
             ]);

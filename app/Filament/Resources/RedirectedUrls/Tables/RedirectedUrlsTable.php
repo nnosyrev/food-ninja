@@ -23,17 +23,19 @@ class RedirectedUrlsTable
         return $table
             ->columns([
                 TextColumn::make('orig_url')
+                    ->label('Оригинальный URL')
                     ->searchable(),
                 TextColumn::make('hash')
                     ->state(fn (RedirectedUrl $redirectedUrl, UrlShortenerInterface $urlShortener): string => $urlShortener->generateShortUrlByHash($redirectedUrl->hash))
-                    ->label('Short url')
+                    ->label('Короткий URL')
                     ->url(fn (RedirectedUrl $redirectedUrl, UrlShortenerInterface $urlShortener): string => $urlShortener->generateShortUrlByHash($redirectedUrl->hash))
                     ->openUrlInNewTab()
                     ->searchable(),
                 TextColumn::make('redirectstatistics_count')
-                    ->label('Number of redirects')
+                    ->label('Количество переходов')
                     ->counts('redirectstatistics'),
                 TextColumn::make('created_at')
+                    ->label('Дата')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -43,6 +45,7 @@ class RedirectedUrlsTable
             ])
             ->recordActions([
                 Action::make('Statistics')
+                    ->label('Статистика')
                     ->color('success')
                     ->icon(Heroicon::NumberedList)
                     ->url(

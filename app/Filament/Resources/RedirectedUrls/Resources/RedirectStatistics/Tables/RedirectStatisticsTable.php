@@ -14,6 +14,7 @@ class RedirectStatisticsTable
                 TextColumn::make('ip')
                     ->searchable(),
                 TextColumn::make('created_at')
+                    ->label('Дата')
                     ->dateTime()
                     ->alignEnd()
                     ->sortable(),

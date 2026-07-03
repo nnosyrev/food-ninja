@@ -14,7 +14,7 @@ class ListRedirectedStatistics extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Action::make('Redirected urls')
+            Action::make('Ссылки')
                 ->url(
                     fn (): string => ListRedirectedUrls::getUrl()
                 ),

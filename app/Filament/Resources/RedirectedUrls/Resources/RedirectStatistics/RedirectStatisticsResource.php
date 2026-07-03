@@ -21,6 +21,8 @@ class RedirectStatisticsResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'Redirect statistics';
 
+    protected static ?string $pluralLabel = 'Статистика переходов';
+
     public static function table(Table $table): Table
     {
         return RedirectStatisticsTable::configure($table);
