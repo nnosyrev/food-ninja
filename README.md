@@ -17,7 +17,7 @@ docker compose -f compose.dev.yaml up -d
 3. Установить зависимости:
 
 ```bash
-docker compose -f compose.dev.yaml exec workspace bash composer install
+docker compose -f compose.dev.yaml exec workspace composer install
 ```
 
 4. Запустить миграции:
