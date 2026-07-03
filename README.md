@@ -26,6 +26,12 @@ docker compose -f compose.dev.yaml exec workspace composer install
 docker compose -f compose.dev.yaml exec workspace php artisan migrate
 ```
 
-5. Открыть приложение:
+5. Рестартовать сервисы:
+
+```bash
+docker compose -f compose.dev.yaml restart
+```
+
+6. Открыть приложение:
 
 Открыть в браузере [http://localhost/admin](http://localhost/admin).
