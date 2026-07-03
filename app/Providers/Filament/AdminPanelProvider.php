@@ -62,6 +62,7 @@ class AdminPanelProvider extends PanelProvider
                     ->defaultRole(null)
                     ->settingsPage(CustomRegistrationSettings::class)
             )
+            ->breadcrumbs(false)
             ->databaseTransactions(true);
     }
 }
