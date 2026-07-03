@@ -61,6 +61,7 @@ class AdminPanelProvider extends PanelProvider
                 FilamentRegistrationPlugin::make()
                     ->defaultRole(null)
                     ->settingsPage(CustomRegistrationSettings::class)
-            );
+            )
+            ->databaseTransactions(true);
     }
 }
